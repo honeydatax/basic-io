@@ -18,8 +18,16 @@ cls
 	next 
 	read a
 	dt=now
-	m=month(dt)
-	y=year(dt)
+	print "get a year and a mounth"
+	print "year: ";
+	xx=pos
+	yy=csrlin
+	input  y
+	locate yy,xx+10
+	print "moth: ";
+	xx=pos
+	yy=csrlin
+	input  m
 	print " ";y
 	print " " + monthname(m)
 	print " "+a
