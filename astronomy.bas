@@ -39,7 +39,25 @@ function years(y as integer,m as integer,d as integer)as integer
 	yearss=yearss+tostart(y,m,d)
 	return yearss
 end function 
+function ddays(y as integer,m as integer,d as integer)as string
+	dim yy as integer
+	dim yyy as integer
+	dim yyyy(0 to 6) as string
+	yyyy(0)="Sa"
+	yyyy(1)="Su"
+	yyyy(2)="Mo"
+	yyyy(3)="Tu"
+	yyyy(4)="We"
+	yyyy(5)="Th"
+	yyyy(6)="Fr"
+	yy=years(y,m,d)
+	yyy=yy\7
+	yyy=7*yyy
+	yy=yy-yyy
+	return yyyy(yy)
+end function 
 
+dim ss as string
 dim xx as integer
 dim yy as integer
 dim y as integer
@@ -56,24 +74,24 @@ do
 	yy=csrlin
 	input  y
 	if y =0 then exit do
-	locate yy,xx+10
-	print "month: ";
-	xx=pos
-	yy=csrlin
-	input  m
-	if m =0 then exit do
-	locate yy,xx+10
-	print "day: ";
-	xx=pos
-	yy=csrlin
-	input  d
-	if y =0 then exit do
-	locate yy,xx+10
-	y=years(y,m,d)
-	if y<0 then 
+	if y<2000 then 
 		print "year must be uper than 2000"
 	else
+		locate yy,xx+10
+		print "month: ";
+		xx=pos
+		yy=csrlin
+		input  m
+		if m =0 then exit do
+		locate yy,xx+10
+		print "day: ";
+		xx=pos
+		yy=csrlin
+		input  d
+		if y =0 then exit do
+		locate yy,xx+10
+		ss=ddays(y,m,d)
 	
-		print y
-	end if 
+		print ss
+	end if
 loop
