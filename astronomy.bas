@@ -17,7 +17,9 @@ function tostart(y as integer,m as integer,d as integer)as integer
 	ddays(11)=30
 	ddays(12)=31
 	ddd=y\4
-	if ddd*4=y then ddays(2)=29
+	if ddd*4=y then
+		ddays(2)=29
+	end if
 	if y=2000 then ddays(2)=29
 	if m>1 then 
 		for i=1 to m-1
@@ -32,9 +34,12 @@ function years(y as integer,m as integer,d as integer)as integer
 	dim yearss as integer
 	dim y2000 as integer
 	dim leapyears as integer
+	dim notyet as integer
 	y2000=2000
 	yearss=y-y2000
-	leapyears=yearss\4
+	notyet=-1
+	if y=2000 then notyet=0
+	leapyears=(yearss-notyet)\4
 	if yearss>0 then leapyears=leapyears+1
 	yearss=yearss*365+leapyears
 	yearss=yearss+tostart(y,m,d)
